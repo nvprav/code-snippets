@@ -1,5 +1,5 @@
 // Function to send an email notification via script
-function sendEmailNotification(templateSysId, targetRecordSysId) {
+function sendEmailNotification() {
     // Initialize a new GlideEmailOutbound object
     var email = new GlideEmailOutbound();
     
@@ -9,9 +9,6 @@ function sendEmailNotification(templateSysId, targetRecordSysId) {
     
     // Add recipients (this example sends to the current user)
     email.setTo(gs.getUser().getEmail()); // Send to current logged-in user
-    
-    // Attach the target record
-    email.addQueryParameter('sys_id', targetRecordSysId);
     
     // Optionally add CC or BCC recipients
     email.addCc('example@company.com');
@@ -23,4 +20,4 @@ function sendEmailNotification(templateSysId, targetRecordSysId) {
 }
 
 // Call the function from within a Business Rule, Workflow Script, or UI Action
-sendEmailNotification('TEMPLATE_SYS_ID', current.sys_id);
+sendEmailNotification();
